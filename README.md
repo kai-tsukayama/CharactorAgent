@@ -3,7 +3,12 @@
 ### こちらのリポジトリは、学習用です。
 
 架空のキャラクターのエージェントが議論するマルチエージェントアプリケーション。
-Python + FastAPI + SQLite + ローカルLLM（Ollama phi3） で構築。
+Python + FastAPI + Next.js + SQLite + ローカルLLM（Ollama phi3） で構築。
+学習のため、エラーハンドリングやテスト等は行っていない
+
+実装してみて分かったこと。
+・LLMによって応答の品質が大きく変わる
+・LLMに投げるプロンプトの設計がすごく大事。それによってLLMが返す応答の質が明らかに変わってくる。
 
 <img width="1920" height="1269" alt="Create-Next-App-03-29-2026_10_56_PM" src="https://github.com/user-attachments/assets/f719900f-61dd-47e8-bd45-e0c60214ae29" />
 
