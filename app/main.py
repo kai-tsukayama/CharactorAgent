@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from app.db import init_db
+from app.db import init_db, seed_characters
 from app.repositories.character_repository import get_all_characters
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
+    seed_characters()
     print("DB initialized")
 
     yield
