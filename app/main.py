@@ -1,11 +1,12 @@
 from fastapi import FastAPI
-from app.db import init_db
+from app.db import init_db, seed_characters
 from app.repositories.character_repository import get_all_characters
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     init_db()
+    seed_characters()
     print("DB initialized")
 
     yield
@@ -24,12 +25,12 @@ def characters():
 
     return [
         {
-            "id": row["id"],
-            "name": row["name"],
-            "role": row["role"],
-            "tone": row["tone"],
-            "personality": row["personality"],
-            "speaking_style": row["speaking_style"],
+            "id": chara.id,
+            "name": chara.name,
+            "role": chara.role,
+            "tone": chara.tone,
+            "personality": chara.personality,
+            "speaking_style": chara.speaking_style
         }
-        for row in rows
+        for chara in rows
     ]
