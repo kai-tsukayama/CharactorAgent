@@ -4,6 +4,7 @@ from app.repositories.character_repository import get_all_characters
 from contextlib import asynccontextmanager
 from app.models import DiscussionRequest
 from app.agent import run_character_discussion, build_summary
+from fastapi.middleware.cors import CORSMiddleware
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -16,6 +17,14 @@ async def lifespan(app: FastAPI):
     print("App shutdown")
 
 app = FastAPI(lifespan=lifespan)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def root():
