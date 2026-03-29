@@ -1,4 +1,5 @@
 from app.db import get_connection
+from app.models import Character
 
 def get_all_characters():
     conn = get_connection()
@@ -8,4 +9,14 @@ def get_all_characters():
     rows = cursor.fetchall()
 
     conn.close()
-    return rows
+    return [
+        Character(
+            id = row["id"],
+            name = row["name"],
+            role = row["role"],
+            tone = row["tone"],
+            personality = row["personality"],
+            speaking_style = row["speaking_style"],
+        )
+        for row in rows
+    ]

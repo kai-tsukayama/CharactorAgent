@@ -25,12 +25,12 @@ def characters():
 
     return [
         {
-            "id": row["id"],
-            "name": row["name"],
-            "role": row["role"],
-            "tone": row["tone"],
-            "personality": row["personality"],
-            "speaking_style": row["speaking_style"],
+            "id": chara.id,
+            "name": chara.name,
+            "role": chara.role,
+            "tone": chara.tone,
+            "personality": chara.personality,
+            "speaking_style": chara.speaking_style
         }
-        for row in rows
+        for chara in rows
     ]
